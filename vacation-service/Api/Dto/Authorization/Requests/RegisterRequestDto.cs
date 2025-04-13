@@ -27,7 +27,5 @@ public class RegisterRequestDto
     public DateTime HiringDate { get; set; }
     [Required]
     public UserRoles UserRole { get; set; }
-
-    [Required]
-    public string PositionName { get; set; }
+    public string? PositionName { get; set; }
 }
