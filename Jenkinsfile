@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/artokit/SeconHackathonVacation.git'
+                git branch: 'master', url: 'https://github.com/artokit/secon-hackathon-back.git'
             }
         }
 
