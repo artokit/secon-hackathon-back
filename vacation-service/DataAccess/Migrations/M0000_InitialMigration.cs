@@ -21,7 +21,8 @@ public class M0000_InitialMigration : Migration
             .WithColumn("department_id").AsGuid().Nullable()
             .WithColumn("role").AsString().NotNullable()
             .WithColumn("hiring_date").AsDateTime().NotNullable().WithDefaultValue("now()")
-            .WithColumn("position_name").AsString().Nullable();
+            .WithColumn("position_name").AsString().Nullable()
+            .WithColumn("extensions_days").AsInt32().NotNullable().WithDefaultValue(0);
         
         Create.Table("departments")
             .WithColumn("id").AsGuid().PrimaryKey().WithDefaultValue(RawSql.Insert("gen_random_uuid()"))
@@ -42,15 +43,16 @@ public class M0000_InitialMigration : Migration
         Create.Table("requests")
             .WithColumn("id").AsGuid().PrimaryKey().WithDefaultValue(RawSql.Insert("gen_random_uuid()"))
             .WithColumn("user_id").AsGuid().NotNullable()
+            .WithColumn("approver_id").AsGuid().NotNullable()
+            .WithColumn("order_id").AsGuid().NotNullable()
+            .WithColumn("status").AsString().NotNullable();
+
+        Create.Table("ranges")
+            .WithColumn("id").AsGuid().PrimaryKey().WithDefaultValue(RawSql.Insert("gen_random_uuid()"))
             .WithColumn("start_date").AsDateTime().NotNullable()
             .WithColumn("end_date").AsDateTime().NotNullable()
-            .WithColumn("extensions_days").AsInt32().NotNullable()
-            .WithColumn("fact_date").AsDateTime().NotNullable()
-            .WithColumn("reason_id").AsGuid().NotNullable()
-            .WithColumn("comment").AsString().Nullable()
-            .WithColumn("department_id").AsGuid().NotNullable()
-            .WithColumn("name").AsString().NotNullable();
-
+            .WithColumn("request_id").AsGuid().NotNullable();
+        
         Create.Table("positions")
             .WithColumn("id").AsGuid().PrimaryKey().WithDefaultValue(RawSql.Insert("gen_random_uuid()"))
             .WithColumn("department_id").AsGuid().NotNullable()

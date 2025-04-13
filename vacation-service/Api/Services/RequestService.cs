@@ -15,12 +15,17 @@ namespace Api.Services
             _requestRepository = requestRepository;
         }
 
-        public async Task<GetRequestResponse> CreateAsync(CreateRequestRequestDto createRequestRequestDto)
-        {
-            var dbRequest = createRequestRequestDto.MapToDb();
+        // public async Task<GetRequestResponse> CreateAsync(CreateRequestRequestDto createRequestRequestDto)
+        // {
+        //     var dbRequest = createRequestRequestDto.MapToDb();
+        //
+        //     var createdRequest = await _requestRepository.CreateRequestAsync(dbRequest);
+        //     return createdRequest.MapToDto();
+        // }
 
-            var createdRequest = await _requestRepository.CreateRequestAsync(dbRequest);
-            return createdRequest.MapToDto();
+        public Task<GetRequestResponse> CreateAsync(CreateRequestRequestDto createRequestRequestDto)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<GetRequestResponse> GetByIdAsync(Guid id)
@@ -35,18 +40,23 @@ namespace Api.Services
             return request.MapToDto();
         }
 
-        public async Task<GetRequestResponse> UpdateAsync(Guid id, UpdateRequestRequestDto updateRequestRequestDto)
+        public Task<GetRequestResponse> UpdateAsync(Guid id, UpdateRequestRequestDto updateRequestRequest)
         {
-            if (await _requestRepository.GetRequestByIdAsync(id) is null)
-            {
-                throw new RequestNotFoundException();
-            }
-
-            var dbRequest = updateRequestRequestDto.MapToDb();
-            var updatedRequest = await _requestRepository.UpdateRequestAsync(id, dbRequest);
-
-            return updatedRequest.MapToDto();
+            throw new NotImplementedException();
         }
+
+        // public async Task<GetRequestResponse> UpdateAsync(Guid id, UpdateRequestRequestDto updateRequestRequestDto)
+        // {
+        //     if (await _requestRepository.GetRequestByIdAsync(id) is null)
+        //     {
+        //         throw new RequestNotFoundException();
+        //     }
+        //
+        //     // var dbRequest = updateRequestRequestDto.MapToDb();
+        //     // var updatedRequest = await _requestRepository.UpdateRequestAsync(id, dbRequest);
+        //
+        //     // return updatedRequest.MapToDto();
+        // }
 
         public async Task DeleteAsync(Guid id)
         {

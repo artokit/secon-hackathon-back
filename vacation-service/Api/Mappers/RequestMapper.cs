@@ -6,27 +6,27 @@ namespace Api.Mappers
 {
     public static class RequestMapper
     {
-        public static DbRequest MapToDb(this CreateRequestRequestDto requestDto)
-        {
-            return new DbRequest
-            {
-                User_Id = requestDto.UserId,
-            };
-        }
+        // public static DbRequest MapToDb(this CreateRequestRequestDto requestDto)
+        // {
+        //     return new DbRequest
+        //     {
+        //         User_Id = requestDto,
+        //     };
+        // }
 
-        public static DbRequest MapToDb(this UpdateRequestRequestDto requestDto)
-        {
-            return new DbRequest
-            {
-                User_Id = requestDto.UserId,
-                Start_Date = requestDto.StartDate,
-                End_Date = requestDto.EndDate,
-                Extensions_Days = requestDto.ExtensionsDays,
-                Fact_Date = requestDto.FactDate,
-                Reason_Id = requestDto.ReasonId,
-                Comment = requestDto.Comment
-            };
-        }
+        // public static DbRequest MapToDb(this UpdateRequestRequestDto requestDto)
+        // {
+        //     return new DbRequest
+        //     {
+        //         User_Id = requestDto.UserId,
+        //         Start_Date = requestDto.StartDate,
+        //         End_Date = requestDto.EndDate,
+        //         Extensions_Days = requestDto.ExtensionsDays,
+        //         Fact_Date = requestDto.FactDate,
+        //         Reason_Id = requestDto.ReasonId,
+        //         Comment = requestDto.Comment
+        //     };
+        // }
 
 
         public static List<GetRequestResponse> MapToDto(this List<DbRequest> dbRequests)
